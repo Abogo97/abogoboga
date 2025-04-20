@@ -6,8 +6,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
-    Route::get('/dashboard', function () {
-        return 'Dashboard Admin';
-    })->name('dashboard');
+route::get('/halo', function(){
+    return view('halo', [
+        "name" => 'Abogo'
+    ]);
+});
+
+Route::get('/hi', function(){
+    return view('admin.hi', [
+        "name" => "Ikhwan"
+    ]);
 });
