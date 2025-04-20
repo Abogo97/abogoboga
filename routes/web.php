@@ -17,3 +17,7 @@ Route::get('/hi', function(){
         "name" => "Ikhwan"
     ]);
 });
+
+route::get('/html-encoding', function (\Illuminate\Http\Request $request){
+    return view('html-encoding', ['name' => $request->input('name')]);
+});
