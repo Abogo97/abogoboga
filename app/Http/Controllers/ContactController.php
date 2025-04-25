@@ -3,19 +3,31 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Repositories\CompanyRepository;
 class ContactController extends Controller
 {
+    public function __construct(protected CompanyRepository $company)
+    {}
     public function index()
     {
-        $companies = [
-            1 => ['name' => 'Company One', 'contacts' => 3],
-            2 => ['name' => 'Company Two', 'contacts' => 5]
-        ];
+        $companies = $this->company->pluck();
         $contacts = $this->getContacts();
         return view('contacts.index', compact('contacts', 'companies'));
     }
     //
-    /*
+    public function create()
+    {  
+        return view('contacts.create');
+    }
+
+    public function show($id)
+    {
+        $contacts = $this->getContacts();
+        abort_unless(isset($contacts[$id]), 404);
+        $contact = $contacts[$id];
+        return view('contacts.show')->width('contact', $contact);
+    }
+    
     protected function getContacts()
     {
         return [
@@ -24,5 +36,5 @@ class ContactController extends Controller
             3 => ['id' => 3, 'Name 3', 'phone' => '789'],
         ];
     }
-    */
+    
 }

@@ -37,4 +37,5 @@ Route::controller(ContactController::class)->group(function () {
 });
 
 route::get('/', WelcomeController::class);
-    
+
+Route::resource('companies', ContactController::class);
