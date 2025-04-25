@@ -15,6 +15,7 @@ class ContactController extends Controller
         return view('contacts.index', compact('contacts', 'companies'));
     }
     //
+    /*
     protected function getContacts()
     {
         return [
@@ -23,4 +24,5 @@ class ContactController extends Controller
             3 => ['id' => 3, 'Name 3', 'phone' => '789'],
         ];
     }
+    */
 }
